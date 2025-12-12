@@ -141,7 +141,7 @@ class Varint(VarType):
             data.append(value&0x7F)
 
         elif self._subType in (VarintSubType.Int64, VarintSubType.UInt64, VarintSubType.SInt64, VarintSubType.Enum):
-            for i in range(4):
+            for i in range(8):
                 data.append((value&0x7F))
                 value=value>>7
                 if value==0: break
