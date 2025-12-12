@@ -23,7 +23,7 @@ temp_sensor = ADC(4)
 BROKER_IP = '10.111.224.91'
 PORT = 8080
 TOPIC = 'temp/pico'
-PUB_IDENT = 4
+PUB_IDENT = 3
     
 # Function to connect to wifi
 def connect(wifi_obj, ssid, password, timeout=10):
@@ -67,7 +67,7 @@ def read_temp(t):
     proto_message.client_id = PUB_IDENT
     proto_message.temperature = temperature
     proto_message.time = time.time()
-    
+    print(temperature)
     mqtt.publish(TOPIC, proto_message.serialize())
     
 
@@ -76,6 +76,6 @@ timer = machine.Timer()
 timer.init(freq=0.5, mode=machine.Timer.PERIODIC, callback=read_temp)
 
 
-message = array[i] 
+#message = array[i] 
 
-newmessage = parse(message)
+#newmessage = parse(message)
